@@ -73,12 +73,36 @@
 ;;  (dotimes (i 10000)
 ;;    (test-func *minecraft-death-message-list* "leo_song fell from a high place and fell out of the world")))
 
+(defparameter *sarcasm*
+  #("真弱鸡啊……"
+    "行不行啊？"
+    "不得行啊……"
+    "安全生产 重于泰山"
+    "-1s"
+    "星际玩家？"
+    "哈哈哈红红火火何厚铧喊憨厚韩寒嘿嘿嘿"
+    "[减500绿宝石]"
+    "看来你还不知道生命的可贵"
+    "小黑在看着你"
+    "[清空经验和道具栏]"
+    "我就看着你作死"
+    "僵尸在看着你"
+    "小白在看着你"
+    "[达到死亡次数限制，从白名单移除]"
+    "你的寿命在以可见的速度流逝"))
+
+(defun get-oops-msg (msg)
+  (declare (ignore msg))
+  (concatenate 'string
+               "oops... "
+               (aref *sarcasm* (random (length *sarcasm*)))))
+
 (defun act-on-death-message (msg)
   (declare (ignore msg))
   (handler-case
-      (progn
-        (send-irc-message *bot1* "oops...")
-        (send-tg-message *bot1* "oops..."))
+      (let ((oops-msg (get-oops-msg nil)))
+        (send-irc-message *bot1* oops-msg)
+        (send-tg-message *bot1* oops-msg))
     (condition (e)
       (logging
        (bot-name *bot1*) "hook ERROR:~S!" e))))
