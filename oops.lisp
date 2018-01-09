@@ -106,7 +106,8 @@
     "胜败乃兵家常事 大侠请重新来过吧"
     "Is there a doctor in the server?"
     "桥豆麻袋，刚才发生了什么事情吗？（黑人问号"
-    "死神：这是在割韭菜吗？"))
+    "死神：这是在割韭菜吗？"
+    "Unit lost."))
 
 (defun get-oops-msg (msg)
   (declare (ignore msg))
