@@ -108,7 +108,8 @@
     ;"桥豆麻袋，刚才发生了什么事情吗？（黑人问号"
     ;"死神：这是在割韭菜吗？"
     "Unit lost."
-    "哎哟，你超逊喔～"))
+    "哎哟，你超逊喔～"
+    "Boom Shakalaka..."))
 
 (defun get-oops-msg (msg)
   (declare (ignore msg))
